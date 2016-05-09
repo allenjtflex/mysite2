@@ -16,6 +16,18 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+import notes.views
+import reqdoc.views
+
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', notes.views.hello ),
+
+    url(r'^documents/$', notes.views.documents_list ),
+    url(r'^documents/create$', notes.views.documents_create ),
+    url(r'^documents/detail/\d(1,2)$', notes.views.documents_detail ),
+
+
+
+
 ]

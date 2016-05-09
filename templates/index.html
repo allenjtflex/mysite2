@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ greeting }}{% endblock %}
+{% block content %}
+
+{{ get_username }}
+
+<ul>
+  <menu><h2>功能清單</h2></menu>
+  <li><a href="{{ get_soulte_url }}documents"><h3>需求單</h3></a></li>
+</ul>
+{% endblock content %}

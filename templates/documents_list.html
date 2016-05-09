@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div><h2>{{ title }}</h2></div>
+
+
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">{{ title }}</div>
+  <table class="table">
+    <tr>
+      <th>申請編號</th>
+      <th>申請日期</th>
+      <th>工作分類</th>
+      <th>部門</th>
+      <th>申請人</th>
+      <th>需求描述</th>
+    </tr>
+      {% for list in obj %}
+      <tr>
+        <td> {{ list.id }} </td>
+        <td>{{ list.apply_date }}</td>
+        <td>{{ list.category }}</td>
+        <td>{{ list.apply_department }}</td>
+        <td>{{ list.apply_user }}</td>
+        <td><a href='{{ get_absolute_url }}{{ list.id }}'> {{ list.request_descript }}</a></td>
+      </tr>
+      {% endfor %}
+  </table>
+
+</div>
+<div align='right'><h3><a href="/documents/create">填寫需求單</a></h3></div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if obj.has_previous %}
+            <a href="?page={{ obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ obj.number }} of {{ obj.paginator.num_pages }}.
+        </span>
+
+        {% if obj.has_next %}
+            <a href="?page={{ obj.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock content%}
